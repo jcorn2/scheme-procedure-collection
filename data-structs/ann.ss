@@ -5,18 +5,19 @@
 ;Example usage
 ;(addlayer (addlayer (ann 1) 3) 2)
 ;Creates an ANN with one ouput neuron, 3 neurons in the hidden layer, and 2 neurons in the input layer
-; X X 
+; X X
 ;   X X
 ; X X
 
 ;A Node is merely a collection of weights for the next layer,
 ;and a point of aggregation for the previous layer
 (define (Node num_of_weights)
+  (define nodeVal 7);Currently set to a constant for the sake of testing
   (if (= 1 num_of_weights)
-      7
-      (cons (Node (- num_of_weights 1)) 7)))
+      nodeVal
+      (cons (Node (- num_of_weights 1)) nodeVal)))
 
-;A layer is a stack of a Node objects
+;A layer is just a stack of a Node objects
 ;At the top of each layer stack is an int, specifying the size of the stack.
 (define (Layer size num_of_weights)
   (define (Layer-iter start end layer)
